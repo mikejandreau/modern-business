@@ -1,0 +1,136 @@
+// Side navigation 
+// --------------------------------------------------
+$sideNavWidth: 250px;
+$sideNavDirection: (right);
+$sideNavBgColor: rgba(0,0,0,0.4);
+$sidenavPadding: 20px;
+$sidenavHeaderHeight: 70px;
+
+.sideNav {
+    width: $sideNavWidth;
+    #{$sideNavDirection}: -$sideNavWidth;
+    position: fixed;
+    z-index: 1000;
+    height: 100%;
+    top: 0;
+    border-left: 1px solid darken( $sideNavBgColor, 6% );
+    transition: all 0.3s ease;
+    overflow: auto;
+
+
+
+    // background: $sideNavBgColor; // color background
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/img/weathervane.jpg'); // image background
+
+
+
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    h3 {
+        color: #fff;
+        font-size: 24px;
+        padding: 0 $sidenavPadding;
+        line-height: $sidenavHeaderHeight;
+        margin: 0;
+        font-weight: 300;
+        border-bottom: 1px solid darken( $sideNavBgColor, 6% );
+        // background: darken( $sideNavBgColor, 6% );
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        text-align: left;
+        border: none;
+        top: 0;
+
+        ul {
+            min-width: 100%;
+            background: lighten( $sideNavBgColor, 3% );
+            box-shadow: none;
+
+            li a {
+                padding: ($sidenavPadding / 2) ($sidenavPadding / 2) ($sidenavPadding / 2) 30px !important;
+                
+                &:hover,
+                &:focus {
+                    background: darken( $sideNavBgColor, 3% );
+                    text-decoration: none;
+                }
+            }
+        }
+
+        li {
+            display: block !important;
+            clear: both;
+            width: 100%;
+
+            a {
+                color: #fff;
+                background-color: transparent;
+                color: #fff;
+                display: block;
+                font-size: 16px;
+                border-bottom: 1px solid darken( $sideNavBgColor, 6% );
+                padding: ($sidenavPadding / 2) $sidenavPadding;
+
+                &:hover,
+                &:focus {
+                    background: darken( $sideNavBgColor, 3% );
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &:before {
+            border: none;
+        }
+    }
+
+    &.sideNav-open {
+        #{$sideNavDirection}: 0px;
+    }
+
+    // .active > a,
+    // .active > a:focus {
+    //     background-color: darken( $sideNavBgColor, 3% );
+        
+    //     &:hover {
+    //         background-color: darken( $sideNavBgColor, 6% );
+    //     }
+    // }
+}
+
+// classes applied to the body
+// --------------------------------------------------
+.sideNavBody {
+    overflow-x: hidden;
+    position: relative;
+    #{$sideNavDirection}: 0;
+    transition: all 0.3s ease;
+}
+
+.sideNavBody-push {
+    #{$sideNavDirection}: $sideNavWidth;
+}
+
+.dropdown-menu > li > a:hover, 
+.dropdown-menu > li > a:focus,
+.nav > li > a:hover, 
+.nav > li > a:focus {
+    color: #fff;
+    text-decoration: none;
+    background-color: lighten( $sideNavBgColor, 6% );
+}
+
+.nav .open > a, 
+.nav .open > a:hover, 
+.nav .open > a:focus {
+    background-color: lighten( $sideNavBgColor, 6% );
+    text-decoration: none;
+    border-color: darken( $sideNavBgColor, 6% );
+}

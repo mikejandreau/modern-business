@@ -1,0 +1,110 @@
+$button_width: 60px;					// width of button area
+$button_height: 70px;					// height of button area
+$bar_thickness: 2px;					// thickness of button bars
+$button_pad: 15px;						// left/right padding between button area and bars.
+$button_bar_space: 8px;				// spacing between button bars
+$button_transistion_duration: 0.3s;		// transition duration
+$hamburger_color: #fff;					// not explaining this one
+
+
+// 54px high
+// 22px pad
+
+.hamburger {
+	display: block;
+	float: right;
+	position: relative;
+	z-index: 1000;
+	overflow: hidden;
+	margin: 0 0;
+	padding: 0;
+	width: $button_width;
+	height: $button_height;
+	font-size: 0;
+	text-indent: -9999px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	box-shadow: none;
+	border-radius: 0;
+	border: none;
+	cursor: pointer;
+	transition: background $button_transistion_duration;
+
+	&:focus {
+		outline: none;
+	}
+
+	@include tablet {
+		display: none;
+	}
+
+	span {
+		display: block;
+		position: absolute;
+		top: ($button_height / 2) - ($bar_thickness / 2);
+		left: $button_pad;
+		right: $button_pad;
+		height: $bar_thickness;
+		background-color: $hamburger_color;
+		transition: background $button_transistion_duration;
+
+		&::before, 
+		&::after {
+			position: absolute;
+			display: block;
+			left: 0;
+			width: 100%;
+			height: $bar_thickness;
+			background-color: $hamburger_color;
+			content: "";
+			transition-duration: $button_transistion_duration, $button_transistion_duration;
+			transition-delay: $button_transistion_duration, 0s;
+		}
+		
+		&::before {
+			top: -$bar_thickness - $button_bar_space;
+			transition-property: top, transform;
+		}
+
+		&::after {
+			bottom: -$bar_thickness - $button_bar_space;
+			transition-property: bottom, transform;
+		}
+	}
+}
+
+button.hamburger,
+button.hamburger:hover,
+button.hamburger:focus {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+}
+
+/* active state, i.e. menu open */
+
+.hamburger.is-active span::before {
+	background-color: #fff;
+	top: 0;
+	transform: rotate(45deg);
+}
+
+.hamburger.is-active span::after {
+	background-color: #fff;
+	bottom: 0;
+	transform: rotate(-45deg);
+}
+
+.hamburger.is-active span::before,
+.hamburger.is-active span::after {
+	transition-delay: 0s, $button_transistion_duration;
+}
+
+button.hamburger.is-active {
+	background-color: transparent;
+}
+
+button.hamburger.is-active span {
+	background: none;
+}

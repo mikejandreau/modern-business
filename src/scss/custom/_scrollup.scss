@@ -1,0 +1,42 @@
+a.scrollup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+
+    bottom: 20px;
+    right: 20px;
+
+    padding: 0;
+
+    color: $btn-default-color;
+    background-color: $btn-default-bg;
+
+    border-color: $btn-default-border;
+    border-style: solid;
+
+    border-width: 1px;
+
+    border-radius: $border-radius-base; // use Bootstrap button border radius
+    // border-radius: 50%; // make scrollup button round
+
+    text-align: center;
+    line-height: 36px;
+    height: 40px;
+    width: 40px;
+
+    // transition: background-color .3s;
+
+    // &:hover,
+    // &:focus {
+    //     color: #fff;
+    //     // background-color: rgba(0,0,0,0.5);
+    //     // background-color: #be1824;
+    //     // text-decoration: none;
+    //     // opacity: 1;
+    // }
+}
+
+
+
+
+
